@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Новая запись</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<div class="page-header">
+
+    <h1>➕ Новая задача</h1>
+
+    <p>
+        Добавь новую задачу и не забудь про дедлайн
+    </p>
+
+</div>
+
+<form method="post">
+
+    <input
+        type="text"
+        name="title"
+        placeholder="Название"
+        required>
+
+    <textarea
+        name="description"
+        placeholder="Описание"
+        required></textarea>
+
+    <input
+        type="date"
+        name="deadline"
+        required>
+
+    <div class="form-buttons">
+
+    <a href="/" class="back-btn">
+        ← Назад
+    </a>
+
+    <button type="submit">
+        ➕ Добавить задачу
+    </button>
+
+</div>
+
+</form>
+
+</body>
+</html>

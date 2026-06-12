@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Helper</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<div class="container">
+
+    <div class="header">
+
+        <h1>🎓 Student Helper</h1>
+
+        <p class="subtitle">
+            ✨ Твой надёжный помощник в учёбе ✨
+        </p>
+
+        <p class="counter">
+            Всего задач: {{ notes|length }}
+        </p>
+
+        <p class="counter done-counter">
+            Выполнено задач: {{ completed_count }}
+        </p>
+
+    </div>
+
+    <div class="top-bar">
+
+        <form method="GET" action="/">
+            <input
+                type="text"
+                name="search"
+                value="{{ search }}"
+                placeholder="🔍 Поиск заметок..."
+                class="search-input"
+            >
+        </form>
+
+        <a href="/add" class="add-btn">
+            ➕ Добавить запись
+        </a>
+
+    </div>
+
+    {% for note in notes %}
+
+    <div class="card">
+
+        <h2>{{ note[1] }}</h2>
+
+        <p>{{ note[2] }}</p>
+
+        <p>
+            <span class="deadline">
+                📅 Дедлайн: {{ note[3] }}
+            </span>
+        </p>
+
+        <p>
+            Статус:
+
+            {% if note[4] == "Выполнено" %}
+
+                <span class="status-done">
+                    ✅ Выполнено
+                </span>
+
+            {% else %}
+
+                <span class="status-process">
+                    ⏳ В процессе
+                </span>
+
+            {% endif %}
+        </p>
+
+        <div class="actions">
+
+            {% if note[4] != "Выполнено" %}
+
+            <a href="/done/{{ note[0] }}" class="done-btn">
+                ✅ Завершить
+            </a>
+
+            {% endif %}
+
+            <a href="/edit/{{ note[0] }}" class="edit-btn">
+                ✏ Редактировать
+            </a>
+
+            <a href="/delete/{{ note[0] }}" class="delete-btn">
+                🗑 Удалить
+            </a>
+
+        </div>
+
+    </div>
+
+    {% endfor %}
+
+</div>
+
+</body>
+</html>
