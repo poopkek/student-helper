@@ -23,6 +23,8 @@ status TEXT
     conn.close()
 
 
+init_db()
+
 @app.route("/")
 def index():
 
